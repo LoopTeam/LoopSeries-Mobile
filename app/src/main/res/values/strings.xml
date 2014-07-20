@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Bandmate</string>
+<string name="drawer_open">Open</string>
+<string name="drawer_close">Close</string>
+    
+    <string name="search">Search</string>
+    <string name="edit">Edit</string>
+    <string name="about_txt">The Music Show began airing at 10:00. Finally, from September to October 1954, the program was broadcast on Sundays at 10 PM.[1]\nThe Music Show was only one of several DuMont Network series to be broadcast from Chicago; others included The Al Morgan Show, Chicago Symphony, Chicagoland Mystery Players, Music From Chicago, They Stand Accused, This Is Music, Windy City Jamboree, and the Emmy-nominated game show Down You Go. All of these series were broadcast from DuMont affiliate WGN-TV over the DuMont Network.[1]</string>
+    <string name="songs">Songs</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
+    <string name="logout">Logout</string>
+    <string name="reply">Reply</string>
+    <string name="retweet">Retweet</string>
+    <string name="favourite">Favourite</string>
+    <string name="refresh">Refresh</string>
+
+    
+</resources>

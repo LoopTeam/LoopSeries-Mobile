@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/pad_10dp" >
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="@dimen/pad_50dp"
+        android:layout_height="@dimen/pad_50dp"
+        android:src="@drawable/img1"
+        android:scaleType="fitXY"
+        android:layout_marginRight="@dimen/pad_10dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+             <TextView
+        android:id="@+id/lbl1"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_16sp"
+        android:textColor="@color/white"
+        android:layout_marginRight="@dimen/pad_5dp"
+        android:text="TextView" />
+    
+    <TextView
+        android:id="@+id/lbl2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_14sp"
+        android:textColor="@color/gray_light"
+        android:drawableLeft="@drawable/ic_clock"
+        android:drawablePadding="@dimen/pad_3dp"
+        android:text="TextView" />
+        </LinearLayout>
+<TextView
+        android:id="@+id/lbl3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_12sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/pad_3dp"
+        android:text="TextView" />
+
+    </LinearLayout>
+
+</LinearLayout>

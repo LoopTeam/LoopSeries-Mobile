@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/l"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:drawableLeft="@drawable/ic_nav1"
+    android:drawablePadding="@dimen/pad_10dp"
+    android:padding="@dimen/pad_10dp"
+    android:text="@string/app_name"
+    android:textColor="@color/nav_color"
+    android:textSize="@dimen/txt_16sp" />
