@@ -22,6 +22,7 @@
     **[] $VALUES;
     public *;
 }
+-keep public class * implements com.bumptech.glide.module.GlideModule
 
 # RetroLambda
 -dontwarn java.lang.invoke.*
@@ -31,3 +32,6 @@
 -keep class retrofit.** { *; }
 -keepattributes Signature
 -keepattributes Exceptions
+
+# Sthetho
+-keep class com.facebook.stetho.** {*;}

@@ -1,7 +1,9 @@
-package com.loop_anime.android;
+package com.loop_anime.android.ui.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+
+import com.loop_anime.android.R;
 
 public class MainActivity extends AppCompatActivity {
 
