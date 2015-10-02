@@ -28,12 +28,22 @@ public class API {
                 "client_credentials");
     }
 
-    public static Observable<AuthToken> getAuthTokenIfAvailable(Context context) {
+    /**
+     * @param context context
+     * @return return an observable with AuthToken for further API calls,
+     * if not in SharedPreferences request from server
+     */
+    private static Observable<AuthToken> getAuthTokenIfAvailable(Context context) {
         if (AuthToken.isExpired(context)) {
             return getAuthTokenFromServer();
         } else {
             return Observable.just(AuthToken.getToken(context));
         }
+    }
+
+    public static Observable<Object> example(Context context) {
+        return getAuthTokenIfAvailable(context)
+                .map(authToken -> Observable.just(authToken.getAccessToken()));
     }
 
 }
