@@ -1,14 +1,18 @@
 package com.loop_anime.android.db;
 
 import android.content.Context;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * User: Yilun Chen
  * Date: 30/09/2015
  */
 public class DBHelper extends SQLiteOpenHelper {
+
+    private static final String LOG_TAG = DBHelper.class.getSimpleName();
 
     private static final String DB_NAME = "loop.sqlite";
 
@@ -35,7 +39,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        try {
+            db.execSQL(Table.Anime.CREATE_SQL);
+        } catch (SQLException e) {
+            Log.e(LOG_TAG, e.getMessage(), e);
+        }
     }
 
     @Override
