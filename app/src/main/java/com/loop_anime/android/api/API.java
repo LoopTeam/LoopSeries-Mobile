@@ -3,7 +3,11 @@ package com.loop_anime.android.api;
 import android.content.Context;
 
 import com.loop_anime.android.LoopAnimeAPISettings;
+import com.loop_anime.android.model.Anime;
 import com.loop_anime.android.model.AuthToken;
+import com.loop_anime.android.model.Payload;
+
+import java.util.List;
 
 import rx.Observable;
 
@@ -22,10 +26,10 @@ public class API {
 
     private static final String CLIENT_SECRET = LoopAnimeAPISettings.CLIENT_SECRET;
 
-    public static Observable<AuthToken> getAuthTokenFromServer() {
+    private static Observable<String> getAuthTokenFromServer() {
         return APIFactory.instance().getToken(CLIENT_ID,
                 CLIENT_SECRET,
-                "client_credentials");
+                "client_credentials").map(AuthToken::getAccessToken);
     }
 
     /**
@@ -33,17 +37,18 @@ public class API {
      * @return return an observable with AuthToken for further API calls,
      * if not in SharedPreferences request from server
      */
-    private static Observable<AuthToken> getAuthTokenIfAvailable(Context context) {
+    private static Observable<String> getAuthTokenIfAvailable(Context context) {
         if (AuthToken.isExpired(context)) {
             return getAuthTokenFromServer();
         } else {
-            return Observable.just(AuthToken.getToken(context));
+            return Observable.just(AuthToken.getToken(context))
+                    .map(AuthToken::getAccessToken);
         }
     }
 
-    public static Observable<Object> example(Context context) {
+    public static Observable<Payload<List<Anime>>> getAnimes(Context context, int limit, int page) {
         return getAuthTokenIfAvailable(context)
-                .map(authToken -> Observable.just(authToken.getAccessToken()));
+                .flatMap(token -> APIFactory.instance().getAnimes(token, limit, page));
     }
 
 }
