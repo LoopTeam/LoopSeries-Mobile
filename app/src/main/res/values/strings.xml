@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Loop-Anime</string>
+
+    <!--content description-->
+    <string name="content_description_poster">Poster</string>
+
 </resources>

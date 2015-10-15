@@ -4,7 +4,7 @@ import com.loop_anime.android.model.Anime;
 import com.loop_anime.android.model.AuthToken;
 import com.loop_anime.android.model.Payload;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import retrofit.http.GET;
 import retrofit.http.Query;
@@ -23,7 +23,7 @@ public interface APIService {
             @Query("grant_type") String grantType);
 
     @GET("/api/v1/animes.json")
-    Observable<Payload<List<Anime>>> getAnimes(
+    Observable<Payload<ArrayList<Anime>>> getAnimes(
             @Query("access_token") String accessToken,
             @Query("maxr") int limit,
             @Query("page") int page);

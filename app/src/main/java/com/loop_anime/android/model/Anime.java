@@ -5,6 +5,7 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 
 import java.io.Serializable;
+import java.util.List;
 
 import static com.loop_anime.android.db.Table.Anime.BIG_POSTER;
 import static com.loop_anime.android.db.Table.Anime.CREATE_TIME;
@@ -62,59 +63,62 @@ public class Anime implements Serializable {
 
     @StorIOSQLiteColumn(name = POSTER)
     @SerializedName("poster")
-     String poster;
+    String poster;
 
     @StorIOSQLiteColumn(name = GENRES)
     @SerializedName("genres")
-     String genres;
+    String genres;
 
     @StorIOSQLiteColumn(name = THEMES)
     @SerializedName("themes")
-     String themes;
+    String themes;
 
     @StorIOSQLiteColumn(name = PLOT_SUMMARY)
     @SerializedName("plot_summary")
-     String plotSummary;
+    String plotSummary;
 
     @StorIOSQLiteColumn(name = RUNNING_TIME)
     @SerializedName("running_time")
-     String runningTime;
+    String runningTime;
 
     @StorIOSQLiteColumn(name = START_TIME)
     @SerializedName("start_time")
-     String startTime;
+    String startTime;
 
     @StorIOSQLiteColumn(name = END_TIME)
     @SerializedName("end_time")
-     String endTime;
+    String endTime;
 
     @StorIOSQLiteColumn(name = STATUS)
     @SerializedName("status")
-     String status;
+    String status;
 
     @StorIOSQLiteColumn(name = RATING)
     @SerializedName("rating")
-     int rating;
+    int rating;
 
     @StorIOSQLiteColumn(name = IMDB_ID)
     @SerializedName("imdb_id")
-     String imdbId;
+    String imdbId;
 
     @StorIOSQLiteColumn(name = RATING_COUNT)
     @SerializedName("rating_count")
-     int ratingCount;
+    int ratingCount;
 
     @StorIOSQLiteColumn(name = CREATE_TIME)
     @SerializedName("create_time")
-     String createTime;
+    String createTime;
 
     @StorIOSQLiteColumn(name = TYPE_SERIES)
     @SerializedName("type_series")
-     String typeSeries;
+    String typeSeries;
 
     @StorIOSQLiteColumn(name = BIG_POSTER)
     @SerializedName("big_poster")
-     String bigPoster;
+    String bigPoster;
+
+    @SerializedName("animes_seasons")
+    List<Integer> animeSeasons;
 
     public void setId(int id) {
         this.id = id;
@@ -242,5 +246,13 @@ public class Anime implements Serializable {
 
     public String getBigPoster() {
         return bigPoster;
+    }
+
+    public List<Integer> getAnimeSeasons() {
+        return animeSeasons;
+    }
+
+    public void setAnimeSeasons(List<Integer> animeSeasons) {
+        this.animeSeasons = animeSeasons;
     }
 }

@@ -7,9 +7,10 @@ import com.loop_anime.android.model.Anime;
 import com.loop_anime.android.model.AuthToken;
 import com.loop_anime.android.model.Payload;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import rx.Observable;
+import rx.schedulers.Schedulers;
 
 
 /**
@@ -26,10 +27,12 @@ public class API {
 
     private static final String CLIENT_SECRET = LoopAnimeAPISettings.CLIENT_SECRET;
 
-    private static Observable<String> getAuthTokenFromServer() {
-        return APIFactory.instance().getToken(CLIENT_ID,
-                CLIENT_SECRET,
-                "client_credentials").map(AuthToken::getAccessToken);
+    public static Observable<String> getAuthTokenFromServer() {
+        return APIFactory.instance().getToken(
+                CLIENT_ID,
+                CLIENT_SECRET, "client_credentials")
+                .subscribeOn(Schedulers.io())
+                .map(AuthToken::getAccessToken);
     }
 
     /**
@@ -42,11 +45,12 @@ public class API {
             return getAuthTokenFromServer();
         } else {
             return Observable.just(AuthToken.getToken(context))
+                    .subscribeOn(Schedulers.io())
                     .map(AuthToken::getAccessToken);
         }
     }
 
-    public static Observable<Payload<List<Anime>>> getAnimes(Context context, int limit, int page) {
+    public static Observable<Payload<ArrayList<Anime>>> getAnimes(Context context, int limit, int page) {
         return getAuthTokenIfAvailable(context)
                 .flatMap(token -> APIFactory.instance().getAnimes(token, limit, page));
     }

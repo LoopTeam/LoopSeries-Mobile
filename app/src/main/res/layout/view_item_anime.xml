@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.loop_anime.android.viewmodel.AnimeViewModel"/>
+
+    </data>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@color/cardview_light_background"
+        app:cardCornerRadius="2dp"
+        app:cardElevation="2dp"
+        tools:layout_width="250dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.loop_anime.android.ui.layout.AspectRatioFrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:aspect_ratio="1.33333">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/content_description_poster"
+                    android:scaleType="centerCrop"
+                    app:imageURL="@{viewModel.anime.poster}"
+                    tools:background="@android:color/holo_blue_light"/>
+
+            </com.loop_anime.android.ui.layout.AspectRatioFrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:lines="2"
+                    android:text="@{viewModel.anime.title}"
+                    android:textSize="14sp"
+                    tools:text="Fate Stay Night/Unlimited Blade Work"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</layout>

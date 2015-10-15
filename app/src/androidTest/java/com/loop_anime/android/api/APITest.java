@@ -17,10 +17,10 @@ import rx.observers.TestSubscriber;
 public class APITest extends TestCase {
 
     public void testGetAuthToken() throws Exception {
-        TestSubscriber<AuthToken> testSubscriber = new TestSubscriber<>();
+        TestSubscriber<String> testSubscriber = new TestSubscriber<>();
         API.getAuthTokenFromServer().subscribe(testSubscriber);
         testSubscriber.assertNoErrors();
-        String accessToken = testSubscriber.getOnNextEvents().get(0).getAccessToken();
+        String accessToken = testSubscriber.getOnNextEvents().get(0);
         Log.v("ACCESS_TOKEN", accessToken);
         Assert.assertFalse(TextUtils.isEmpty(accessToken));
     }

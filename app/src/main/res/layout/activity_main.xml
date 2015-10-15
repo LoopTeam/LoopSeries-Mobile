@@ -6,4 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <fragment
+        android:name="com.loop_anime.android.ui.fragment.AnimesFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragment_animes"/>
+
 </android.support.design.widget.CoordinatorLayout>

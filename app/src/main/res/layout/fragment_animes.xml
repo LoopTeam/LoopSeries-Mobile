@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <com.loop_anime.android.ui.layout.AutoFitRecyclerView
+            android:id="@+id/recycler_animes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:columnWidth="@dimen/card_anime_min_width"
+            android:padding="4dp"
+            tools:listitem="@layout/view_item_anime"/>
+
+    </FrameLayout>
+
+</layout>
