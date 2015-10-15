@@ -18,7 +18,7 @@ public class AnimeViewHolder extends RecyclerView.ViewHolder {
 
     public static AnimeViewHolder create(LayoutInflater inflater, ViewGroup parent) {
         ViewItemAnimeBinding binding = ViewItemAnimeBinding.inflate(inflater, parent, false);
-        binding.setViewModel(new AnimeViewModel(null));
+        binding.setViewModel(new AnimeViewModel(parent.getContext(), null));
         return new AnimeViewHolder(binding);
     }
 

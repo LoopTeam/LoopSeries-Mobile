@@ -50,15 +50,24 @@
                 android:orientation="vertical">
 
                 <TextView
-                    style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:lines="2"
+                    android:lines="1"
                     android:text="@{viewModel.anime.title}"
+                    android:textColor="@color/primaryText"
                     android:textSize="14sp"
                     tools:text="Fate Stay Night/Unlimited Blade Work"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:lines="1"
+                    android:text="@{viewModel.getRatingString}"
+                    android:textColor="@color/secondaryText"
+                    android:textSize="14sp"
+                    tools:text="8/10 from 108 users"/>
 
             </LinearLayout>
 

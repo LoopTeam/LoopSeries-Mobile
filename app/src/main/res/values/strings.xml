@@ -4,4 +4,12 @@
     <!--content description-->
     <string name="content_description_poster">Poster</string>
 
+    <!--anime-->
+    <string name="anime_rating">%s/10</string>
+    <string name="anime_no_rating">No Rating</string>
+    <plurals name="anime_rating_user_count">
+        <item quantity="one">from one user</item>
+        <item quantity="other">from %s users</item>
+    </plurals>
+
 </resources>
