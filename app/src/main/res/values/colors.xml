@@ -8,5 +8,7 @@
     <color name="secondaryText">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
-    <color name="background">@android:color/background_light</color>
+    <color name="background">#FAFAFA</color>
+
+    <color name="white">#FFFFFF</color>
 </resources>

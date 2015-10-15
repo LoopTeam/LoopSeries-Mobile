@@ -1,6 +1,7 @@
 package com.loop_anime.android.viewmodel;
 
 import android.databinding.BindingAdapter;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -33,6 +34,10 @@ public class AnimeViewModel {
         Glide.with(imageView.getContext()).load(ImageUtils.getImageURL(imageURL))
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView);
+    }
+
+    public void onClickCard(View view) {
+
     }
 
 }

@@ -15,7 +15,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        android:background="@color/cardview_light_background"
+        android:background="@color/white"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{viewModel.onClickCard}"
+        android:stateListAnimator="@anim/card_elevation"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
         tools:layout_width="250dp">
