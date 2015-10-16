@@ -11,12 +11,19 @@ import android.view.ViewGroup;
 import com.loop_anime.android.R;
 import com.loop_anime.android.api.API;
 import com.loop_anime.android.databinding.FragmentAnimesBinding;
+import com.loop_anime.android.db.Table;
 import com.loop_anime.android.db.TypeMapping;
+import com.loop_anime.android.model.Anime;
 import com.loop_anime.android.ui.adapter.AnimesAdapter;
 import com.loop_anime.android.utils.StorIOUtils;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
+import com.pushtorefresh.storio.sqlite.queries.Query;
 
+import java.util.ArrayList;
+
+import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * User: Yilun Chen
@@ -48,14 +55,35 @@ public class AnimesFragment extends BaseFragment {
         mBinding.recyclerAnimes.setHasFixedSize(true);
         mAdapter = new AnimesAdapter();
         mBinding.recyclerAnimes.setAdapter(mAdapter);
-        API.getAnimes(getActivity(), 20, 1)
+        Subscription subscription = API.getAnimes(getActivity(), 20, 1)
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(arrayListPayload -> {
-                    mStorIOSQLite.put().objects(arrayListPayload.getPayload()).prepare().executeAsBlocking();
-                    return arrayListPayload.getPayload();
-                })
-                .subscribe(mAdapter::setAnimes, throwable -> {
-                    Log.v("ANIME_FRAGMENT", throwable.getMessage());
-                });
+                .flatMap(arrayListPayload -> mStorIOSQLite
+                        .put()
+                        .objects(arrayListPayload.getPayload())
+                        .prepare()
+                        .createObservable())
+                .subscribe(
+                        result -> updateFromDB(),
+                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
+                );
+        mCompositeSubscription.add(subscription);
+    }
+
+    private void updateFromDB() {
+        Subscription subscription = mStorIOSQLite.get()
+                .listOfObjects(Anime.class)
+                .withQuery(Query.builder()
+                                .table(Table.Anime.TABLE_NAME)
+                                .build()
+                )
+                .prepare()
+                .createObservable()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        animes -> mAdapter.setAnimes(new ArrayList<>(animes)),
+                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
+                );
+        mCompositeSubscription.add(subscription);
     }
 }
