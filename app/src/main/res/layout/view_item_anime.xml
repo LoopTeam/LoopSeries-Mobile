@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.loop_anime.android.view.ui.layout.AspectRatioFrameLayout
+            <com.loop_anime.android.ui.layout.AspectRatioFrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:aspect_ratio="1.33333">
@@ -41,7 +41,7 @@
                     app:imageURL="@{viewModel.anime.poster}"
                     tools:background="@android:color/holo_blue_light"/>
 
-            </com.loop_anime.android.view.ui.layout.AspectRatioFrameLayout>
+            </com.loop_anime.android.ui.layout.AspectRatioFrameLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

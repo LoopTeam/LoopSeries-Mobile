@@ -1,4 +1,4 @@
-package com.loop_anime.android.view.ui.activity;
+package com.loop_anime.android.ui.activity;
 
 import android.os.Bundle;
 

@@ -1,4 +1,4 @@
-package com.loop_anime.android.view.ui.fragment;
+package com.loop_anime.android.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

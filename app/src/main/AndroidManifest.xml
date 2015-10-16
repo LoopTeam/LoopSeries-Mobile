@@ -16,7 +16,7 @@
             android:name="com.loop_anime.android.LoopAnimeGlideModule"
             android:value="GlideModule"/>
         <activity
-            android:name=".view.ui.activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:configChanges="screenSize|orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

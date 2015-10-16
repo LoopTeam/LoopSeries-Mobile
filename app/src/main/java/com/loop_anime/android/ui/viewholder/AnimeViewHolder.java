@@ -1,4 +1,4 @@
-package com.loop_anime.android.view.ui.viewholder;
+package com.loop_anime.android.ui.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.loop_anime.android.view.ui.layout;
+package com.loop_anime.android.ui.layout;
 
 import android.content.Context;
 import android.content.res.TypedArray;
