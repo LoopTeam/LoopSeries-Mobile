@@ -63,8 +63,10 @@ public class AnimesFragment extends BaseFragment {
                         .prepare()
                         .createObservable())
                 .subscribe(
-                        result -> updateFromDB(),
-                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
+                        result -> {
+                        },
+                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage()),
+                        this::updateFromDB
                 );
         mCompositeSubscription.add(subscription);
     }
