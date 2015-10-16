@@ -1,4 +1,4 @@
-package com.loop_anime.android.api;
+package com.loop_anime.android.model.api;
 
 import com.facebook.stetho.okhttp.StethoInterceptor;
 import com.google.gson.Gson;

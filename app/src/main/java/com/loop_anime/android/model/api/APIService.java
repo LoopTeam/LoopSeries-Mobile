@@ -1,8 +1,8 @@
-package com.loop_anime.android.api;
+package com.loop_anime.android.model.api;
 
-import com.loop_anime.android.model.Anime;
-import com.loop_anime.android.model.AuthToken;
-import com.loop_anime.android.model.Payload;
+import com.loop_anime.android.model.dao.Anime;
+import com.loop_anime.android.model.dao.AuthToken;
+import com.loop_anime.android.model.dao.Payload;
 
 import java.util.ArrayList;
 

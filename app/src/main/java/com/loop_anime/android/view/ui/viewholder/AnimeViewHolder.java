@@ -1,11 +1,11 @@
-package com.loop_anime.android.ui.viewholder;
+package com.loop_anime.android.view.ui.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.loop_anime.android.databinding.ViewItemAnimeBinding;
-import com.loop_anime.android.model.Anime;
+import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.viewmodel.AnimeViewModel;
 
 /**

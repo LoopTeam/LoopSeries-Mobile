@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.loop_anime.android.R;
-import com.loop_anime.android.model.Anime;
+import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.utils.ImageUtils;
 
 /**

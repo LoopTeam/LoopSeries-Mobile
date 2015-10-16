@@ -1,4 +1,4 @@
-package com.loop_anime.android.model;
+package com.loop_anime.android.model.dao;
 
 import android.content.Context;
 import android.content.SharedPreferences;

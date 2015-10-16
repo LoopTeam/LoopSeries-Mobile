@@ -1,4 +1,4 @@
-package com.loop_anime.android.db;
+package com.loop_anime.android.model.db;
 
 import android.content.Context;
 import android.database.SQLException;

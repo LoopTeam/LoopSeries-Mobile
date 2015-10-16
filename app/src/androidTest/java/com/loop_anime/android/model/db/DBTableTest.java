@@ -1,12 +1,12 @@
-package com.loop_anime.android.db;
+package com.loop_anime.android.model.db;
 
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import com.loop_anime.android.model.Anime;
-import com.loop_anime.android.model.AnimeStorIOSQLiteDeleteResolver;
-import com.loop_anime.android.model.AnimeStorIOSQLiteGetResolver;
-import com.loop_anime.android.model.AnimeStorIOSQLitePutResolver;
+import com.loop_anime.android.model.dao.Anime;
+import com.loop_anime.android.model.dao.AnimeStorIOSQLiteDeleteResolver;
+import com.loop_anime.android.model.dao.AnimeStorIOSQLiteGetResolver;
+import com.loop_anime.android.model.dao.AnimeStorIOSQLitePutResolver;
 import com.pushtorefresh.storio.sqlite.SQLiteTypeMapping;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;

@@ -1,4 +1,4 @@
-package com.loop_anime.android.model;
+package com.loop_anime.android.model.dao;
 
 import com.google.gson.annotations.SerializedName;
 import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteColumn;
@@ -7,23 +7,23 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 import java.io.Serializable;
 import java.util.List;
 
-import static com.loop_anime.android.db.Table.Anime.BIG_POSTER;
-import static com.loop_anime.android.db.Table.Anime.CREATE_TIME;
-import static com.loop_anime.android.db.Table.Anime.END_TIME;
-import static com.loop_anime.android.db.Table.Anime.GENRES;
-import static com.loop_anime.android.db.Table.Anime.ID;
-import static com.loop_anime.android.db.Table.Anime.IMDB_ID;
-import static com.loop_anime.android.db.Table.Anime.PLOT_SUMMARY;
-import static com.loop_anime.android.db.Table.Anime.POSTER;
-import static com.loop_anime.android.db.Table.Anime.RATING;
-import static com.loop_anime.android.db.Table.Anime.RATING_COUNT;
-import static com.loop_anime.android.db.Table.Anime.RUNNING_TIME;
-import static com.loop_anime.android.db.Table.Anime.START_TIME;
-import static com.loop_anime.android.db.Table.Anime.STATUS;
-import static com.loop_anime.android.db.Table.Anime.TABLE_NAME;
-import static com.loop_anime.android.db.Table.Anime.THEMES;
-import static com.loop_anime.android.db.Table.Anime.TITLE;
-import static com.loop_anime.android.db.Table.Anime.TYPE_SERIES;
+import static com.loop_anime.android.model.db.Table.Anime.BIG_POSTER;
+import static com.loop_anime.android.model.db.Table.Anime.CREATE_TIME;
+import static com.loop_anime.android.model.db.Table.Anime.END_TIME;
+import static com.loop_anime.android.model.db.Table.Anime.GENRES;
+import static com.loop_anime.android.model.db.Table.Anime.ID;
+import static com.loop_anime.android.model.db.Table.Anime.IMDB_ID;
+import static com.loop_anime.android.model.db.Table.Anime.PLOT_SUMMARY;
+import static com.loop_anime.android.model.db.Table.Anime.POSTER;
+import static com.loop_anime.android.model.db.Table.Anime.RATING;
+import static com.loop_anime.android.model.db.Table.Anime.RATING_COUNT;
+import static com.loop_anime.android.model.db.Table.Anime.RUNNING_TIME;
+import static com.loop_anime.android.model.db.Table.Anime.START_TIME;
+import static com.loop_anime.android.model.db.Table.Anime.STATUS;
+import static com.loop_anime.android.model.db.Table.Anime.TABLE_NAME;
+import static com.loop_anime.android.model.db.Table.Anime.THEMES;
+import static com.loop_anime.android.model.db.Table.Anime.TITLE;
+import static com.loop_anime.android.model.db.Table.Anime.TYPE_SERIES;
 
 /**
  * User: Yilun Chen

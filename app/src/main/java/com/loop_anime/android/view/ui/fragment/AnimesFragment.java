@@ -1,4 +1,4 @@
-package com.loop_anime.android.ui.fragment;
+package com.loop_anime.android.view.ui.fragment;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -9,12 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.loop_anime.android.R;
-import com.loop_anime.android.api.API;
+import com.loop_anime.android.model.api.API;
 import com.loop_anime.android.databinding.FragmentAnimesBinding;
-import com.loop_anime.android.db.Table;
-import com.loop_anime.android.db.TypeMapping;
-import com.loop_anime.android.model.Anime;
-import com.loop_anime.android.ui.adapter.AnimesAdapter;
+import com.loop_anime.android.model.db.Table;
+import com.loop_anime.android.model.db.TypeMapping;
+import com.loop_anime.android.model.dao.Anime;
+import com.loop_anime.android.view.ui.adapter.AnimesAdapter;
 import com.loop_anime.android.utils.StorIOUtils;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.queries.Query;

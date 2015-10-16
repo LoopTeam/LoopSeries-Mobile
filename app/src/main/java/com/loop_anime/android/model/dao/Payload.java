@@ -1,4 +1,4 @@
-package com.loop_anime.android.model;
+package com.loop_anime.android.model.dao;
 
 import com.google.gson.annotations.SerializedName;
 

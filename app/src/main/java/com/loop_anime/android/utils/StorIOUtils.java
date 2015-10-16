@@ -2,8 +2,8 @@ package com.loop_anime.android.utils;
 
 import android.content.Context;
 
-import com.loop_anime.android.db.DBHelper;
-import com.loop_anime.android.db.TypeMapping;
+import com.loop_anime.android.model.db.DBHelper;
+import com.loop_anime.android.model.db.TypeMapping;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 

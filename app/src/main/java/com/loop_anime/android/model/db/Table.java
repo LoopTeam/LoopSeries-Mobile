@@ -1,4 +1,4 @@
-package com.loop_anime.android.db;
+package com.loop_anime.android.model.db;
 
 /**
  * User: Yilun Chen

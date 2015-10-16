@@ -1,9 +1,7 @@
-package com.loop_anime.android.api;
+package com.loop_anime.android.model.api;
 
 import android.text.TextUtils;
 import android.util.Log;
-
-import com.loop_anime.android.model.AuthToken;
 
 import junit.framework.Assert;
 import junit.framework.TestCase;
