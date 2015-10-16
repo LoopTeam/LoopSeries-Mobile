@@ -55,6 +55,7 @@ public class AnimesFragment extends BaseFragment {
         mBinding.recyclerAnimes.setHasFixedSize(true);
         mAdapter = new AnimesAdapter();
         mBinding.recyclerAnimes.setAdapter(mAdapter);
+        updateFromDB();
         Subscription subscription = API.getAnimes(getActivity(), 20, 1)
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMap(arrayListPayload -> mStorIOSQLite
@@ -63,10 +64,8 @@ public class AnimesFragment extends BaseFragment {
                         .prepare()
                         .createObservable())
                 .subscribe(
-                        result -> {
-                        },
-                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage()),
-                        this::updateFromDB
+                        result -> updateFromDB(),
+                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
                 );
         mCompositeSubscription.add(subscription);
     }
