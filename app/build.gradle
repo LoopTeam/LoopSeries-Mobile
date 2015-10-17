@@ -6,7 +6,7 @@ buildscript {
 
     dependencies {
         classpath 'me.tatarka:gradle-retrolambda:3.2.3'
-        classpath "com.android.databinding:dataBinder:1.0-rc1"
+        classpath "com.android.databinding:dataBinder:1.0-rc2"
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
