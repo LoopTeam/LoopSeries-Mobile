@@ -7,6 +7,7 @@ import com.loop_anime.android.model.dao.Payload;
 import java.util.ArrayList;
 
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 import rx.Observable;
 
@@ -27,5 +28,11 @@ public interface APIService {
             @Query("access_token") String accessToken,
             @Query("maxr") int limit,
             @Query("page") int page);
+
+    @GET("/api/v1/animes/{anime}.json")
+    Observable<Payload<Anime>> getAnime(
+            @Path("anime") int animeId,
+            @Query("access_token") String accessToken
+    );
 
 }

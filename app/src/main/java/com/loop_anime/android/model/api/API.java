@@ -55,4 +55,9 @@ public class API {
                 .flatMap(token -> APIFactory.instance().getAnimes(token, limit, page));
     }
 
+    public static Observable<Payload<Anime>> getAnime(Context context, int id) {
+        return getAuthTokenIfAvailable(context)
+                .flatMap(token -> APIFactory.instance().getAnime(id, token));
+    }
+
 }
