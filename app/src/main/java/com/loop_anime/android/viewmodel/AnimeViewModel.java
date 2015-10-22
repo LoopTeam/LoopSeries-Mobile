@@ -5,6 +5,8 @@ import android.view.View;
 
 import com.loop_anime.android.R;
 import com.loop_anime.android.model.dao.Anime;
+import com.loop_anime.android.ui.activity.MainActivity;
+import com.loop_anime.android.ui.fragment.AnimeFragment;
 
 /**
  * User: Yilun Chen
@@ -30,6 +32,11 @@ public class AnimeViewModel {
     }
 
     public void onClickCard(View view) {
+        if (mContext instanceof MainActivity) {
+            AnimeFragment animeFragment = new AnimeFragment();
+            animeFragment.setArguments(anime);
+            ((MainActivity) mContext).launchFragment(animeFragment);
+        }
 
     }
 
