@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-    >
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="viewModel"
             type="com.loop_anime.android.viewmodel.AnimeViewModel"/>
+
+        <import type="android.view.View"/>
 
     </data>
 
@@ -39,15 +40,15 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
+                        android:background="@color/background"
+                        android:elevation="2dp"
                         app:aspect_ratio="1.33333"
                         app:layout_widthPercent="30%">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/background"
                             android:contentDescription="@string/content_description_poster"
-                            android:elevation="2dp"
                             android:scaleType="centerCrop"
                             android:src="@{viewModel.anime.poster}"
                             app:noAnimation="@{true}"/>
@@ -133,8 +134,32 @@
                     tools:ignore="UnusedAttribute"
                     tools:text="@string/placeholder_description"/>
 
-            </LinearLayout>
+                <TextView
+                    style="@style/TextAppearance.AppCompat.Subhead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/anime_seasons"
+                    android:textColor="@color/secondaryText"/>
 
+                <GridLayout
+                    android:id="@+id/grid_seasons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:columnCount="5"
+                    android:rowCount="1"
+                    app:grid="@{viewModel.anime.animeSeasons}"/>
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="@{viewModel.anime.animeSeasons == null ? View.VISIBLE : View.GONE}"/>
+
+            </LinearLayout>
 
         </ScrollView>
 

@@ -1,4 +1,4 @@
-package com.loop_anime.android.viewmodel;
+package com.loop_anime.android.viewmodel.adapter;
 
 import android.databinding.DataBindingComponent;
 import android.graphics.drawable.Drawable;

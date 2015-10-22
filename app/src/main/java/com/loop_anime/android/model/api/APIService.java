@@ -30,7 +30,7 @@ public interface APIService {
             @Query("page") int page);
 
     @GET("/api/v1/animes/{anime}.json")
-    Observable<Payload<Anime>> getAnime(
+    Observable<Anime> getAnime(
             @Path("anime") int animeId,
             @Query("access_token") String accessToken
     );

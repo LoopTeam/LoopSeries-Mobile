@@ -16,6 +16,7 @@ public class ColorUtils {
         if (SDK_INT >= M) {
             color = context.getColor(colorResId);
         } else {
+            //noinspection deprecation
             color = context.getResources().getColor(colorResId);
         }
         return color;
