@@ -23,6 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
                 android:orientation="vertical">
 
                 <android.support.percent.PercentRelativeLayout
@@ -35,7 +36,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
-                        android:layout_margin="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
                         app:aspect_ratio="1.33333"
                         app:layout_widthPercent="30%">
 
@@ -46,7 +49,8 @@
                             android:contentDescription="@string/content_description_poster"
                             android:elevation="2dp"
                             android:scaleType="centerCrop"
-                            android:src="@{viewModel.anime.poster}"/>
+                            android:src="@{viewModel.anime.poster}"
+                            app:noAnimation="@{true}"/>
 
                     </com.loop_anime.android.ui.layout.AspectRatioFrameLayout>
 
@@ -96,6 +100,18 @@
                             android:text="@{viewModel.anime.status}"
                             tools:text="Start Time: 2015 - 8 - 31"/>
 
+
+                        <TextView
+                            style="@style/TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:background="?attr/selectableItemBackground"
+                            android:drawableEnd="@drawable/ic_imdb_16dp"
+                            android:drawablePadding="4dp"
+                            android:onClick="@{viewModel.viewOnIMDB}"
+                            android:text="@string/anime_view_imdb"/>
+
                     </LinearLayout>
 
                 </android.support.percent.PercentRelativeLayout>
@@ -104,12 +120,15 @@
                     style="@style/TextAppearance.AppCompat.Body1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:breakStrategy="balanced"
+                    android:background="?attr/selectableItemBackground"
+                    android:breakStrategy="high_quality"
                     android:ellipsize="end"
-                    android:maxLines="6"
+                    android:maxLines="5"
+                    android:onClick="@{viewModel.toggleDescription}"
                     android:paddingBottom="16dp"
                     android:paddingEnd="16dp"
                     android:paddingStart="16dp"
+                    android:paddingTop="16dp"
                     android:text="@{viewModel.anime.plotSummary}"
                     tools:ignore="UnusedAttribute"
                     tools:text="@string/placeholder_description"/>

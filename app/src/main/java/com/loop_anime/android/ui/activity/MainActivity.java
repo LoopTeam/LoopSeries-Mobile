@@ -20,12 +20,20 @@ public class MainActivity extends BaseActivity {
                 this,
                 R.layout.activity_main,
                 new DataBindingComponentImpl());
-        launchFragment(new AnimesFragment());
+        getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.anim.fragment_pop_enter, 0)
+                .add(R.id.container_fragment, new AnimesFragment())
+                .commit();
         setSupportActionBar(mBinding.toolbar);
     }
 
     public void launchFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(
+                        R.anim.fragment_enter,
+                        R.anim.fragment_exit,
+                        R.anim.fragment_pop_enter,
+                        R.anim.fragment_pop_exit)
                 .replace(R.id.container_fragment, fragment)
                 .addToBackStack(null)
                 .commit();

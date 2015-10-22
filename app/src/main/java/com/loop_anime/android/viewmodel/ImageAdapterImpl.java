@@ -4,6 +4,7 @@ import android.databinding.DataBindingComponent;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.loop_anime.android.utils.ImageUtils;
@@ -15,12 +16,22 @@ import com.loop_anime.android.utils.ImageUtils;
 public class ImageAdapterImpl implements ImageAdapter {
 
     @Override
-    public void loadImage(DataBindingComponent component, ImageView imageView, String imageURL, Drawable drawable) {
-        Glide.with(imageView.getContext()).load(ImageUtils.getImageURL(imageURL))
+    public void loadImage(DataBindingComponent component,
+                          ImageView imageView,
+                          String imageURL,
+                          Drawable drawable,
+                          boolean noAnimation) {
+        DrawableRequestBuilder<String> builder = Glide.with(imageView.getContext())
+                .load(ImageUtils.getImageURL(imageURL))
                 .placeholder(drawable)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .centerCrop()
-                .into(imageView);
+                .centerCrop();
+        if (noAnimation) {
+            builder.dontAnimate();
+        } else {
+            builder.crossFade();
+        }
+        builder.into(imageView);
     }
 
 }

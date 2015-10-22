@@ -2,6 +2,7 @@ package com.loop_anime.android.viewmodel;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.TextView;
 
 import com.loop_anime.android.R;
 import com.loop_anime.android.model.dao.Anime;
@@ -38,6 +39,19 @@ public class AnimeViewModel {
             ((MainActivity) mContext).launchFragment(animeFragment);
         }
 
+    }
+
+    public void viewOnIMDB(View view) {
+
+    }
+
+    public void toggleDescription(View view) {
+        TextView textView = (TextView) view;
+        if (textView.getMaxLines() < Integer.MAX_VALUE) {
+            textView.setMaxLines(Integer.MAX_VALUE);
+        } else {
+            textView.setMaxLines(5);
+        }
     }
 
     public String getRatingString() {
