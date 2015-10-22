@@ -153,6 +153,7 @@
                     android:rowCount="1"
                     app:grid="@{viewModel.anime.animeSeasons}"/>
 
+                <!--suppress AndroidDomInspection -->
                 <ProgressBar
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
