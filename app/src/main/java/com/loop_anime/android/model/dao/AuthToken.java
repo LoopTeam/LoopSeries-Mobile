@@ -78,7 +78,7 @@ public class AuthToken implements Serializable {
 
     private static SharedPreferences getTokenSharedPreferences(Context context) {
         return context.getSharedPreferences(
-                context.getApplicationContext().getPackageName() + PREFERENCES_TOKEN,
+                context.getApplicationContext().getPackageName() + "." + PREFERENCES_TOKEN,
                 Context.MODE_PRIVATE);
     }
 
@@ -94,7 +94,7 @@ public class AuthToken implements Serializable {
 
     public static boolean isExpired(Context context) {
         SharedPreferences pref = getTokenSharedPreferences(context);
-        return pref.getFloat(PREF_EXPIRE, -1f) >= System.currentTimeMillis() / 1000
+        return !(pref.getLong(PREF_EXPIRE, -1l) >= System.currentTimeMillis() / 1000)
                 || TextUtils.isEmpty(pref.getString(PREF_TOKEN, null));
     }
 

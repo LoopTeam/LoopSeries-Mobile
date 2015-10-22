@@ -27,12 +27,11 @@ public class API {
 
     private static final String CLIENT_SECRET = LoopAnimeAPISettings.CLIENT_SECRET;
 
-    public static Observable<String> getAuthTokenFromServer() {
+    public static Observable<AuthToken> getAuthTokenFromServer() {
         return APIFactory.instance().getToken(
                 CLIENT_ID,
                 CLIENT_SECRET, "client_credentials")
-                .subscribeOn(Schedulers.io())
-                .map(AuthToken::getAccessToken);
+                .subscribeOn(Schedulers.io());
     }
 
     /**
@@ -42,7 +41,11 @@ public class API {
      */
     private static Observable<String> getAuthTokenIfAvailable(Context context) {
         if (AuthToken.isExpired(context)) {
-            return getAuthTokenFromServer();
+            return getAuthTokenFromServer()
+                    .map(authToken -> {
+                        authToken.save(context);
+                        return authToken.getAccessToken();
+                    });
         } else {
             return Observable.just(AuthToken.getToken(context))
                     .subscribeOn(Schedulers.io())
