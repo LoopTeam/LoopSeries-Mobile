@@ -29,7 +29,10 @@ public class ImageAdapterImpl implements ImageAdapter {
         if (noAnimation) {
             builder.dontAnimate();
         } else {
-            builder.crossFade();
+            DrawableRequestBuilder<String> preLoaderBuilder = Glide.with(imageView.getContext())
+                    .load(ImageUtils.getImagePreloadURL(imageURL)).centerCrop();
+            builder.thumbnail(preLoaderBuilder);
+            builder.crossFade(600);
         }
         builder.into(imageView);
     }
