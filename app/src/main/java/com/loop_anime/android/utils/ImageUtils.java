@@ -50,24 +50,101 @@ public class ImageUtils {
 
     @NonNull
     private static String getThumborImageURL(String url, int width, int height) {
-        return LoopAnimeAPISettings.THUMBOR_BASE_URL + "/" + width + "x" + height + "/" + url;
+        return new ThumborURLBuilder().baseURL(LoopAnimeAPISettings.THUMBOR_BASE_URL)
+                .imageURL(url)
+                .fit(width, height)
+                .build();
     }
 
     @NonNull
     private static String getThumborImageURL(String url) {
-        return LoopAnimeAPISettings.THUMBOR_BASE_URL + "/" + url;
+        return new ThumborURLBuilder().baseURL(LoopAnimeAPISettings.THUMBOR_BASE_URL)
+                .imageURL(url)
+                .build();
     }
 
     @NonNull
     private static String getThumborImageURL(String url, int maxSize) {
-        return LoopAnimeAPISettings.THUMBOR_BASE_URL
-                + "/full-fit-in/" + maxSize + "x" + maxSize + "/" + url;
+        return new ThumborURLBuilder().baseURL(LoopAnimeAPISettings.THUMBOR_BASE_URL)
+                .imageURL(url)
+                .maxSize(maxSize)
+                .build();
     }
 
     @NonNull
     private static String getThumborPreloadImageURL(String url) {
-        return LoopAnimeAPISettings.THUMBOR_BASE_URL
-                + "/full-fit-in/" + 300 + "x" + 300
-                + "/filters:saturation(0):brightness(60)/" + url;
+        return new ThumborURLBuilder().baseURL(LoopAnimeAPISettings.THUMBOR_BASE_URL)
+                .imageURL(url)
+                .fit(300, 300)
+                .thumbnail()
+                .build();
+    }
+
+    @SuppressWarnings("unused")
+    public static class ThumborURLBuilder {
+
+        private static final int DEFAULT_MAX_SIZE = 640;
+
+        private String mBaseURL;
+
+        private String mImageURL;
+
+        private int mWidth = -1;
+
+        private int mHeight = -1;
+
+        private boolean isMaterialThumbnailImage = false;
+
+        public ThumborURLBuilder() {
+        }
+
+        public ThumborURLBuilder baseURL(String baseURL) {
+            mBaseURL = baseURL;
+            return this;
+        }
+
+        public ThumborURLBuilder maxSize(int maxSize) {
+            mHeight = maxSize;
+            mWidth = maxSize;
+            return this;
+        }
+
+        public ThumborURLBuilder fit() {
+            mWidth = DEFAULT_MAX_SIZE;
+            mHeight = DEFAULT_MAX_SIZE;
+            return this;
+        }
+
+        public ThumborURLBuilder fit(int width, int height) {
+            mHeight = height;
+            mWidth = width;
+            return this;
+        }
+
+        public ThumborURLBuilder thumbnail() {
+            isMaterialThumbnailImage = true;
+            return this;
+        }
+
+        public ThumborURLBuilder imageURL(String imageURL) {
+            mImageURL = imageURL;
+            return this;
+        }
+
+        public String build() {
+            StringBuilder builder = new StringBuilder();
+            if (TextUtils.isEmpty(mBaseURL.trim()) || TextUtils.isEmpty(mImageURL.trim())) {
+                throw new RuntimeException("You must provide BaseURL");
+            }
+            builder.append(mBaseURL.trim());
+            if (mHeight > 0 && mWidth > 0) {
+                builder.append("/full-fit-in/").append(mWidth).append("x").append(mHeight);
+            }
+            if (isMaterialThumbnailImage) {
+                builder.append("/filters:saturation(0):brightness(60)");
+            }
+            builder.append("/").append(mImageURL.trim());
+            return builder.toString();
+        }
     }
 }
