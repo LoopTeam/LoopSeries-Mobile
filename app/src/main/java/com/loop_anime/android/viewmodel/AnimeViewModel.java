@@ -38,7 +38,6 @@ public class AnimeViewModel {
             animeFragment.setArguments(anime);
             ((MainActivity) mContext).launchFragment(animeFragment);
         }
-
     }
 
     public void viewOnIMDB(View view) {

@@ -23,6 +23,8 @@ public class MainActivity extends BaseActivity
 
     public ActionBarDrawerToggle mDrawerToggle;
 
+    private int mOldBackstackCount = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,12 +74,13 @@ public class MainActivity extends BaseActivity
             valueAnimator.addUpdateListener(
                     animation -> mDrawerToggle.onDrawerSlide(null, 1 - animation.getAnimatedFraction())
             );
-        } else {
+        } else if (fm.getBackStackEntryCount() == 1 && mOldBackstackCount == 0) {
             valueAnimator.addUpdateListener(
                     animation -> mDrawerToggle.onDrawerSlide(null, animation.getAnimatedFraction())
             );
         }
         valueAnimator.start();
+        mOldBackstackCount = fm.getBackStackEntryCount();
     }
 
     @Override
