@@ -54,6 +54,10 @@ public class AnimeFragment extends BaseFragment {
         mAnime = (Anime) getArguments().getSerializable(ARGUMENT_ANIME);
         mAnimeViewModel = new AnimeViewModel(getActivity(), mAnime);
         mBinding.setViewModel(mAnimeViewModel);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         API.getAnime(getActivity(), mAnime.getId())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
@@ -63,5 +67,6 @@ public class AnimeFragment extends BaseFragment {
                         },
                         throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
                 );
+        super.onActivityCreated(savedInstanceState);
     }
 }

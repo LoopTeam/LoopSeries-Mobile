@@ -7,4 +7,8 @@
     <dimen name="card_anime_min_width">144dp</dimen>
     <dimen name="season_anime_min_width">96dp</dimen>
 
+    <!--drawer navigation-->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+
 </resources>

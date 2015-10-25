@@ -4,6 +4,10 @@
     <!--content description-->
     <string name="content_description_poster">Poster</string>
 
+    <!--navigation-->
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
     <!--anime-->
     <string name="anime_rating">%s/10</string>
     <string name="anime_no_rating">No Rating</string>

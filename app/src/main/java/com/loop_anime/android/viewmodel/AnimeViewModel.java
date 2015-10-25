@@ -49,8 +49,6 @@ public class AnimeViewModel {
         TextView textView = (TextView) view;
         if (textView.getMaxLines() < Integer.MAX_VALUE) {
             textView.setMaxLines(Integer.MAX_VALUE);
-        } else {
-            textView.setMaxLines(5);
         }
     }
 
