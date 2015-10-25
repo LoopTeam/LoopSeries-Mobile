@@ -3,9 +3,9 @@ package com.loop_anime.android.viewmodel;
 import android.databinding.DataBindingComponent;
 
 import com.loop_anime.android.viewmodel.adapter.GridLayoutAdapter;
-import com.loop_anime.android.viewmodel.adapter.GridLayoutAdapterImpl;
 import com.loop_anime.android.viewmodel.adapter.ImageAdapter;
 import com.loop_anime.android.viewmodel.adapter.ImageAdapterImpl;
+import com.loop_anime.android.viewmodel.adapter.SeasonsGridLayoutAdapterImpl;
 
 /**
  * User: Yilun Chen
@@ -15,7 +15,7 @@ public class DataBindingComponentImpl implements DataBindingComponent {
 
     private static ImageAdapter sImageAdapter = new ImageAdapterImpl();
 
-    private static GridLayoutAdapter sGridAdapter = new GridLayoutAdapterImpl();
+    private static GridLayoutAdapter sGridAdapter = new SeasonsGridLayoutAdapterImpl();
 
     @Override
     public GridLayoutAdapter getGridLayoutAdapter() {

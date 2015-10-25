@@ -143,14 +143,14 @@
                     android:text="@string/anime_seasons"
                     android:textColor="@color/secondaryText"/>
 
-                <GridLayout
+                <com.loop_anime.android.ui.layout.AutoFitGridLayout
                     android:id="@+id/grid_seasons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
-                    android:columnCount="5"
-                    android:rowCount="1"
+                    android:columnCount="6"
+                    android:columnWidth="@dimen/season_anime_min_width"
                     app:grid="@{viewModel.anime.animeSeasons}"/>
 
                 <!--suppress AndroidDomInspection -->

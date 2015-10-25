@@ -16,7 +16,7 @@ import java.util.List;
  * User: Yilun Chen
  * Date: 15/10/22
  */
-public class GridLayoutAdapterImpl implements GridLayoutAdapter {
+public class SeasonsGridLayoutAdapterImpl implements GridLayoutAdapter {
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -28,7 +28,7 @@ public class GridLayoutAdapterImpl implements GridLayoutAdapter {
                 Context context = gridLayout.getContext();
                 TextView textView = (TextView) LayoutInflater.from(context)
                         .inflate(R.layout.view_item_season, gridLayout, false);
-                textView.setText("" + (i + 1));
+                textView.setText(context.getString(R.string.season, i + 1));
                 gridLayout.addView(textView);
             }
         }
