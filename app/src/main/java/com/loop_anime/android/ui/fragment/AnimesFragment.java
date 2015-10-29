@@ -15,12 +15,16 @@ import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.model.db.Table;
 import com.loop_anime.android.model.db.TypeMapping;
 import com.loop_anime.android.ui.adapter.AnimesAdapter;
+import com.loop_anime.android.ui.listener.RecyclerPaginationListener;
 import com.loop_anime.android.utils.StorIOUtils;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
+import com.pushtorefresh.storio.sqlite.operations.put.PutResults;
+import com.pushtorefresh.storio.sqlite.queries.DeleteQuery;
 import com.pushtorefresh.storio.sqlite.queries.Query;
 
 import java.util.ArrayList;
 
+import rx.Observable;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -31,6 +35,8 @@ import rx.schedulers.Schedulers;
  */
 public class AnimesFragment extends BaseFragment {
 
+    private static final int ITEM_PER_PAGE = 20;
+
     private FragmentAnimesBinding mBinding;
 
     private AnimesAdapter mAdapter;
@@ -38,6 +44,13 @@ public class AnimesFragment extends BaseFragment {
     private StorIOSQLite mStorIOSQLite;
 
     private boolean initialized = false;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mStorIOSQLite = StorIOUtils.getStorIOLite(getActivity(), TypeMapping.MAPPING.ANIME);
+        mAdapter = new AnimesAdapter();
+    }
 
     @Nullable
     @Override
@@ -53,11 +66,56 @@ public class AnimesFragment extends BaseFragment {
                 R.layout.fragment_animes,
                 container,
                 false);
-        mBinding.recyclerAnimes.setHasFixedSize(true);
-        mAdapter = new AnimesAdapter();
-        mBinding.recyclerAnimes.setAdapter(mAdapter);
-        mStorIOSQLite = StorIOUtils.getStorIOLite(getActivity(), TypeMapping.MAPPING.ANIME);
         return mBinding.getRoot();
+    }
+
+    private RecyclerPaginationListener mPaginationListener = new RecyclerPaginationListener(1) {
+        @Override
+        public void onLoadMore(int page) {
+            loadAnimes(page);
+        }
+    };
+
+    private void loadAnimes(int page) {
+        Subscription subscription = API.getAnimes(getActivity(), ITEM_PER_PAGE, page)
+                .observeOn(AndroidSchedulers.mainThread())
+                .flatMap(arrayListPayload -> {
+                    if (arrayListPayload.getPayload().size() == 0) {
+                        mPaginationListener.reachEnd();
+                    }
+                    Observable<PutResults<Anime>> saveObservable = mStorIOSQLite
+                            .put()
+                            .objects(arrayListPayload.getPayload())
+                            .prepare()
+                            .createObservable();
+                    if (page == 1) {
+                        //delete the db for a brand new refresh
+                        return mStorIOSQLite.delete().byQuery(
+                                DeleteQuery.builder()
+                                        .table(Table.Anime.TABLE_NAME)
+                                        .build()
+                        ).prepare().createObservable().map(deleteResult -> saveObservable);
+                    } else {
+                        return saveObservable;
+                    }
+                }).subscribe(
+                        result -> {
+                            mPaginationListener.loadFinished(true);
+                        },
+                        throwable -> {
+                            mPaginationListener.loadFinished(false);
+                            Log.v("ANIME_FRAGMENT", throwable.getMessage());
+                        }
+                );
+        mCompositeSubscription.add(subscription);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mBinding.recyclerAnimes.setHasFixedSize(true);
+        mBinding.recyclerAnimes.setAdapter(mAdapter);
+        mBinding.recyclerAnimes.addOnScrollListener(mPaginationListener);
     }
 
     @Override
@@ -65,19 +123,7 @@ public class AnimesFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         if (!initialized) {
             updateFromDB();
-            Subscription subscription = API.getAnimes(getActivity(), 20, 1)
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .flatMap(arrayListPayload -> mStorIOSQLite
-                            .put()
-                            .objects(arrayListPayload.getPayload())
-                            .prepare()
-                            .createObservable())
-                    .subscribe(
-                            result -> {
-                            },
-                            throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
-                    );
-            mCompositeSubscription.add(subscription);
+            loadAnimes(1);
         }
     }
 
