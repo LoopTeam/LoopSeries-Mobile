@@ -20,7 +20,8 @@ public class ImageAdapterImpl implements ImageAdapter {
                           ImageView imageView,
                           String imageURL,
                           Drawable drawable,
-                          boolean noAnimation) {
+                          boolean noAnimation,
+                          int colorFilter) {
         DrawableRequestBuilder<String> builder = Glide.with(imageView.getContext())
                 .load(ImageUtils.getImageURL(imageURL))
                 .placeholder(drawable)
@@ -35,6 +36,11 @@ public class ImageAdapterImpl implements ImageAdapter {
             builder.crossFade(600);
         }
         builder.into(imageView);
+        if (colorFilter != 0) {
+            imageView.setColorFilter(colorFilter);
+        } else {
+            imageView.setColorFilter(null);
+        }
     }
 
 }

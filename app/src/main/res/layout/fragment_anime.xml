@@ -17,6 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_description_poster"
+            android:scaleType="centerCrop"
+            android:src="@{viewModel.anime.poster}"
+            app:colorFilter="@{@color/backgroundDarkenFilter}"
+            app:noAnimation="@{true}"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -75,6 +84,7 @@
                             android:gravity="center_vertical"
                             android:maxLines="2"
                             android:text="@{viewModel.anime.title}"
+                            android:textColor="@color/white"
                             tools:text="Fate/stay night UBW"/>
 
                         <TextView
@@ -83,6 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@{viewModel.getRatingString}"
+                            android:textColor="@color/white"
                             tools:text="8/10 from 108 users"/>
 
                         <TextView
@@ -91,6 +102,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@{viewModel.anime.startTime ?? @string/anime_start_time(viewModel.anime.startTime)}"
+                            android:textColor="@color/white"
                             tools:text="Start Time: 2015 - 4 -1"/>
 
                         <TextView
@@ -99,6 +111,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@{viewModel.anime.status}"
+                            android:textColor="@color/white"
                             tools:text="Start Time: 2015 - 8 - 31"/>
 
 
@@ -111,7 +124,8 @@
                             android:drawableEnd="@drawable/ic_imdb_16dp"
                             android:drawablePadding="4dp"
                             android:onClick="@{viewModel.viewOnIMDB}"
-                            android:text="@string/anime_view_imdb"/>
+                            android:text="@string/anime_view_imdb"
+                            android:textColor="@color/white"/>
 
                     </LinearLayout>
 
@@ -131,6 +145,7 @@
                     android:paddingStart="16dp"
                     android:paddingTop="16dp"
                     android:text="@{viewModel.anime.plotSummary}"
+                    android:textColor="@color/white"
                     tools:ignore="UnusedAttribute"
                     tools:text="@string/placeholder_description"/>
 
@@ -141,7 +156,7 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/anime_seasons"
-                    android:textColor="@color/secondaryText"/>
+                    android:textColor="@color/white"/>
 
                 <com.loop_anime.android.ui.layout.AutoFitGridLayout
                     android:id="@+id/grid_seasons"

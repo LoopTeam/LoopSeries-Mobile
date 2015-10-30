@@ -11,11 +11,12 @@ import android.widget.ImageView;
  */
 public interface ImageAdapter {
 
-    @BindingAdapter(value = {"android:src", "placeHolder", "noAnimation"}, requireAll = false)
+    @BindingAdapter(value = {"android:src", "placeHolder", "noAnimation", "colorFilter"}, requireAll = false)
     void loadImage(DataBindingComponent component,
                    ImageView imageView,
                    String imageURL,
                    Drawable drawable,
-                   boolean noAnimation);
+                   boolean noAnimation,
+                   int colorFilter);
 
 }
