@@ -17,12 +17,15 @@ public class RecyclerPaginationListener extends RecyclerView.OnScrollListener {
 
     private int mCurrentPage;
 
+    private final int mStartPage;
+
     public RecyclerPaginationListener() {
         this(0);
     }
 
     public RecyclerPaginationListener(int initialPage) {
         mCurrentPage = initialPage;
+        mStartPage = initialPage;
     }
 
     @Override
@@ -49,6 +52,18 @@ public class RecyclerPaginationListener extends RecyclerView.OnScrollListener {
     public void reachEnd() {
         mIsLoading = false;
         mIsEndReached = true;
+    }
+
+    public void setUpWithRecyclerView(RecyclerView recyclerView) {
+        reset();
+        recyclerView.addOnScrollListener(this);
+        onLoadMore(1);
+    }
+
+    public void reset() {
+        mCurrentPage = mStartPage;
+        mIsLoading = false;
+        mIsEndReached = false;
     }
 
 }

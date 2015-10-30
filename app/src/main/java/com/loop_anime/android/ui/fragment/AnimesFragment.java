@@ -82,6 +82,7 @@ public class AnimesFragment extends BaseFragment {
                 .flatMap(arrayListPayload -> {
                     if (arrayListPayload.getPayload().size() == 0) {
                         mPaginationListener.reachEnd();
+                        return Observable.just(null);
                     }
                     Observable<PutResults<Anime>> saveObservable = mStorIOSQLite
                             .put()
@@ -94,16 +95,22 @@ public class AnimesFragment extends BaseFragment {
                                 DeleteQuery.builder()
                                         .table(Table.Anime.TABLE_NAME)
                                         .build()
-                        ).prepare().createObservable().map(deleteResult -> saveObservable);
+                        ).prepare().createObservable().flatMap(deleteResult -> saveObservable);
                     } else {
                         return saveObservable;
                     }
                 }).subscribe(
                         result -> {
                             mPaginationListener.loadFinished(true);
+                            mBinding.swipeLayoutAnimes.post(
+                                    () -> mBinding.swipeLayoutAnimes.setRefreshing(false)
+                            );
                         },
                         throwable -> {
                             mPaginationListener.loadFinished(false);
+                            mBinding.swipeLayoutAnimes.post(
+                                    () -> mBinding.swipeLayoutAnimes.setRefreshing(false)
+                            );
                             Log.v("ANIME_FRAGMENT", throwable.getMessage());
                         }
                 );
@@ -115,7 +122,8 @@ public class AnimesFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mBinding.recyclerAnimes.setHasFixedSize(true);
         mBinding.recyclerAnimes.setAdapter(mAdapter);
-        mBinding.recyclerAnimes.addOnScrollListener(mPaginationListener);
+        mBinding.swipeLayoutAnimes.setOnRefreshListener(
+                () -> mPaginationListener.setUpWithRecyclerView(mBinding.recyclerAnimes));
     }
 
     @Override
@@ -123,7 +131,7 @@ public class AnimesFragment extends BaseFragment {
         super.onActivityCreated(savedInstanceState);
         if (!initialized) {
             updateFromDB();
-            loadAnimes(1);
+            mPaginationListener.setUpWithRecyclerView(mBinding.recyclerAnimes);
         }
     }
 

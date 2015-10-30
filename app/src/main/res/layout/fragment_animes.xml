@@ -8,14 +8,21 @@
         android:layout_height="match_parent"
         android:background="@color/background">
 
-        <com.loop_anime.android.ui.layout.AutoFitRecyclerView
-            android:id="@+id/recycler_animes"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_layout_animes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:columnWidth="@dimen/card_anime_min_width"
-            android:padding="4dp"
-            tools:listitem="@layout/view_item_anime"/>
+            android:layout_height="match_parent">
+
+            <com.loop_anime.android.ui.layout.AutoFitRecyclerView
+                android:id="@+id/recycler_animes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:columnWidth="@dimen/card_anime_min_width"
+                android:padding="4dp"
+                tools:listitem="@layout/view_item_anime"/>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </FrameLayout>
 
