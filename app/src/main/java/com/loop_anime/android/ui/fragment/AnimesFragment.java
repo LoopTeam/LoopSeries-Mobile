@@ -16,6 +16,7 @@ import com.loop_anime.android.model.db.Table;
 import com.loop_anime.android.model.db.TypeMapping;
 import com.loop_anime.android.ui.adapter.AnimesAdapter;
 import com.loop_anime.android.ui.listener.RecyclerPaginationListener;
+import com.loop_anime.android.utils.ColorUtils;
 import com.loop_anime.android.utils.StorIOUtils;
 import com.pushtorefresh.storio.sqlite.StorIOSQLite;
 import com.pushtorefresh.storio.sqlite.operations.put.PutResults;
@@ -122,6 +123,7 @@ public class AnimesFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mBinding.recyclerAnimes.setHasFixedSize(true);
         mBinding.recyclerAnimes.setAdapter(mAdapter);
+        mBinding.swipeLayoutAnimes.setColorSchemeColors(ColorUtils.getColor(getContext(), R.color.colorAccent));
         mBinding.swipeLayoutAnimes.setOnRefreshListener(
                 () -> mPaginationListener.setUpWithRecyclerView(mBinding.recyclerAnimes));
     }

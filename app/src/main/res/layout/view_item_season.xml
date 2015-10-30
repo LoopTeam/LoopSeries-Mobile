@@ -7,7 +7,5 @@
           android:clickable="true"
           android:padding="16dp"
           android:textAlignment="center"
-          android:textColor="@color/white"
-          tools:background="@android:color/background_dark"
           tools:text="Season 1"/>
 
