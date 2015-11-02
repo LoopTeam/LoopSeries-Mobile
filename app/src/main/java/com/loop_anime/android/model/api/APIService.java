@@ -2,6 +2,7 @@ package com.loop_anime.android.model.api;
 
 import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.model.dao.AuthToken;
+import com.loop_anime.android.model.dao.Episode;
 import com.loop_anime.android.model.dao.Payload;
 
 import java.util.ArrayList;
@@ -35,4 +36,15 @@ public interface APIService {
             @Query("access_token") String accessToken
     );
 
+    @GET("/api/v1/episodes.json")
+    Observable<ArrayList<Episode>> getSeasonEpisodes(
+            @Query("season") int seasonId,
+            @Query("access_token") String accessToken
+    );
+
+    @GET("/api/v1/episodes.json")
+    Observable<ArrayList<Episode>> getAnimeEpisodes(
+            @Query("anime") int seasonId,
+            @Query("access_token") String accessToken
+    );
 }

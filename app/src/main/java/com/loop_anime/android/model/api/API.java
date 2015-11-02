@@ -5,6 +5,7 @@ import android.content.Context;
 import com.loop_anime.android.LoopAnimeAPISettings;
 import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.model.dao.AuthToken;
+import com.loop_anime.android.model.dao.Episode;
 import com.loop_anime.android.model.dao.Payload;
 
 import java.util.ArrayList;
@@ -53,7 +54,10 @@ public class API {
         }
     }
 
-    public static Observable<Payload<ArrayList<Anime>>> getAnimes(Context context, int limit, int page) {
+    public static Observable<Payload<ArrayList<Anime>>> getAnimes(
+            Context context,
+            int limit,
+            int page) {
         return getAuthTokenIfAvailable(context)
                 .flatMap(token -> APIFactory.instance().getAnimes(token, limit, page));
     }
@@ -61,6 +65,11 @@ public class API {
     public static Observable<Anime> getAnime(Context context, int id) {
         return getAuthTokenIfAvailable(context)
                 .flatMap(token -> APIFactory.instance().getAnime(id, token));
+    }
+
+    public static Observable<ArrayList<Episode>> getSeasonEpisodes(Context context, int seasonId) {
+        return getAuthTokenIfAvailable(context)
+                .flatMap(token -> APIFactory.instance().getSeasonEpisodes(seasonId, token));
     }
 
 }

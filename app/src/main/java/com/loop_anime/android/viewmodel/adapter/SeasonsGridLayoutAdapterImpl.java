@@ -9,6 +9,8 @@ import android.widget.GridLayout;
 import android.widget.TextView;
 
 import com.loop_anime.android.R;
+import com.loop_anime.android.ui.activity.MainActivity;
+import com.loop_anime.android.ui.fragment.EpisodesFragment;
 
 import java.util.List;
 
@@ -29,6 +31,14 @@ public class SeasonsGridLayoutAdapterImpl implements GridLayoutAdapter {
                 TextView textView = (TextView) LayoutInflater.from(context)
                         .inflate(R.layout.view_item_season, gridLayout, false);
                 textView.setText(context.getString(R.string.season, i + 1));
+                final int seasonId = ids.get(i);
+                textView.setOnClickListener(v -> {
+                    EpisodesFragment episodesFragment = new EpisodesFragment();
+                    episodesFragment.setSeason(seasonId);
+                    if (context instanceof MainActivity) {
+                        ((MainActivity) context).launchFragment(episodesFragment);
+                    }
+                });
                 gridLayout.addView(textView);
             }
         }
