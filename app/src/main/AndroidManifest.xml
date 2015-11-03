@@ -15,6 +15,7 @@
         <meta-data
             android:name="com.loop_anime.android.LoopAnimeGlideModule"
             android:value="GlideModule"/>
+
         <activity
             android:name=".ui.activity.MainActivity"
             android:configChanges="screenSize|orientation|keyboardHidden">
@@ -24,6 +25,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.activity.LinksActivity"
+            android:configChanges="screenSize|orientation|keyboardHidden"/>
+
     </application>
 
 </manifest>

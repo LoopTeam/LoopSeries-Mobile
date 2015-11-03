@@ -13,7 +13,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{viewModel.onClickEpisode}">
 
         <com.loop_anime.android.ui.layout.AspectRatioFrameLayout
             android:id="@+id/container_poster"

@@ -12,7 +12,7 @@ import rx.subscriptions.CompositeSubscription;
 public abstract class BaseActivity extends AppCompatActivity {
 
     //container for batch RxJava unsubscription
-    protected CompositeSubscription mCompositeSubscription;
+    public CompositeSubscription mCompositeSubscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

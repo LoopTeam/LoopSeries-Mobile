@@ -2,7 +2,9 @@ package com.loop_anime.android.model.api;
 
 import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.model.dao.AuthToken;
+import com.loop_anime.android.model.dao.DirectLink;
 import com.loop_anime.android.model.dao.Episode;
+import com.loop_anime.android.model.dao.Link;
 import com.loop_anime.android.model.dao.Payload;
 
 import java.util.ArrayList;
@@ -42,9 +44,23 @@ public interface APIService {
             @Query("access_token") String accessToken
     );
 
+    @SuppressWarnings("unused")
     @GET("/api/v1/episodes.json")
     Observable<ArrayList<Episode>> getAnimeEpisodes(
             @Query("anime") int seasonId,
             @Query("access_token") String accessToken
     );
+
+    @GET("/api/v1/links.json?")
+    Observable<ArrayList<Link>> getLinks(
+            @Query("episode") int episodeId,
+            @Query("access_token") String accessToken
+    );
+
+    @GET("/api/v1/links/{link}.json?")
+    Observable<DirectLink> getDirectLink(
+            @Path("link") int linkId,
+            @Query("access_token") String accessToken
+    );
+
 }

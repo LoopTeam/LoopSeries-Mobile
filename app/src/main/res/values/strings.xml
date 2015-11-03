@@ -26,6 +26,12 @@
     <!--episode-->
     <string name="episode_number">Episode %s</string>
 
+    <!--link-->
+    <string name="link_language">Language: %s</string>
+    <string name="subtitle_language">Subtitle: %s</string>
+    <string name="error_no_link">No Video Found</string>
+    <string name="error_timeout_getting_link">Timeout</string>
+
     <!--placeholders-->
     <string name="placeholder_description">Fate/stay night chronicles a two-week period in the life of the protagonist Shirō Emiya, an amateur magus who attends a school named Homurahara Gakuen in Fuyuki City, Japan. The story primarily takes place at and around Shirō Emiya\'s house, which acts as his base location in the Holy Grail War. Outside of Shirō\'s house, frequented locations include Homurahara Gakuen (the high school), and the Ryūdō Temple.</string>
     <string name="anime_seasons">Seasons</string>

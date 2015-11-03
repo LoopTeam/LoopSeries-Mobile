@@ -27,7 +27,7 @@ public class EpisodeViewHolder extends RecyclerView.ViewHolder {
         return new EpisodeViewHolder(binding);
     }
 
-    public EpisodeViewHolder(ViewItemEpisodeBinding binding) {
+    private EpisodeViewHolder(ViewItemEpisodeBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
     }

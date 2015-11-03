@@ -27,7 +27,7 @@ public class AnimeViewHolder extends RecyclerView.ViewHolder {
         return new AnimeViewHolder(binding);
     }
 
-    public AnimeViewHolder(ViewItemAnimeBinding binding) {
+    private AnimeViewHolder(ViewItemAnimeBinding binding) {
         super(binding.getRoot());
         mBinding = binding;
     }

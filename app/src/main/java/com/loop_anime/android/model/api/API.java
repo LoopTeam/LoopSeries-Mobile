@@ -5,7 +5,9 @@ import android.content.Context;
 import com.loop_anime.android.LoopAnimeAPISettings;
 import com.loop_anime.android.model.dao.Anime;
 import com.loop_anime.android.model.dao.AuthToken;
+import com.loop_anime.android.model.dao.DirectLink;
 import com.loop_anime.android.model.dao.Episode;
+import com.loop_anime.android.model.dao.Link;
 import com.loop_anime.android.model.dao.Payload;
 
 import java.util.ArrayList;
@@ -70,6 +72,16 @@ public class API {
     public static Observable<ArrayList<Episode>> getSeasonEpisodes(Context context, int seasonId) {
         return getAuthTokenIfAvailable(context)
                 .flatMap(token -> APIFactory.instance().getSeasonEpisodes(seasonId, token));
+    }
+
+    public static Observable<ArrayList<Link>> getEpisodeLinks(Context context, int episodeId) {
+        return getAuthTokenIfAvailable(context)
+                .flatMap(token -> APIFactory.instance().getLinks(episodeId, token));
+    }
+
+    public static Observable<DirectLink> getDirectLink(Context context, int linkId) {
+        return getAuthTokenIfAvailable(context)
+                .flatMap(token -> APIFactory.instance().getDirectLink(linkId, token));
     }
 
 }

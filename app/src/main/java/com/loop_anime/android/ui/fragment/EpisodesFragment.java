@@ -32,6 +32,7 @@ public class EpisodesFragment extends BaseFragment {
 
     private int mSeasonId;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private EpisodesAdapter mAdapter;
 
     public void setSeason(int seasonId) {

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.loop_anime.android.viewmodel.LinkViewModel"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{viewModel.onClickLink}"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.link.hoster}"
+            android:textColor="@color/primaryText"
+            tools:text="Anime44"/>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@{@string/link_language(viewModel.link.lang)}"
+            android:textColor="@color/secondaryText"
+            tools:text="Language: ENG"/>
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@{@string/subtitle_language(viewModel.link.subLang)}"
+            android:textColor="@color/secondaryText"
+            tools:text="Subtitle: ENG"/>
+
+    </LinearLayout>
+
+</layout>
