@@ -12,6 +12,7 @@ import com.loop_anime.android.ui.activity.BaseActivity;
 import com.loop_anime.android.utils.VideoUtils;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -47,6 +48,7 @@ public class LinkViewModel {
             BaseActivity activity = (BaseActivity) mContext;
             Subscription subscription = API.getDirectLink(activity, mLink.getId())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .timeout(5, TimeUnit.SECONDS)
                     .subscribe(directLink -> {
                         //launch with external player
                         List<String> dq = directLink.getDirectLink().getDq();
@@ -57,7 +59,7 @@ public class LinkViewModel {
                         }
                     }, throwable -> {
                         Log.e(LOG_TAG, throwable.getMessage());
-                        Toast.makeText(view.getContext(), R.string.error_timeout_getting_link, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     });
             activity.mCompositeSubscription.add(subscription);
         }
