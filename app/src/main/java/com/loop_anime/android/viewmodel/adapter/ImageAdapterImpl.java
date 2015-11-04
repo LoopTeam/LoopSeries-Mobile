@@ -25,7 +25,7 @@ public class ImageAdapterImpl implements ImageAdapter {
         DrawableRequestBuilder<String> builder = Glide.with(imageView.getContext())
                 .load(ImageUtils.getImageURL(imageURL))
                 .placeholder(drawable)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop();
         if (noAnimation) {
             builder.dontAnimate();
