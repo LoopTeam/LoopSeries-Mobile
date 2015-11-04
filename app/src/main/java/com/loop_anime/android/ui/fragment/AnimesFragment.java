@@ -36,6 +36,8 @@ import rx.schedulers.Schedulers;
  */
 public class AnimesFragment extends BaseFragment {
 
+    private static final String LOG_TAG = AnimesFragment.class.getSimpleName();
+
     private static final int ITEM_PER_PAGE = 20;
 
     private FragmentAnimesBinding mBinding;
@@ -112,7 +114,7 @@ public class AnimesFragment extends BaseFragment {
                             mBinding.swipeLayoutAnimes.post(
                                     () -> mBinding.swipeLayoutAnimes.setRefreshing(false)
                             );
-                            Log.v("ANIME_FRAGMENT", throwable.getMessage());
+                            Log.e(LOG_TAG, throwable.getMessage());
                         }
                 );
         mCompositeSubscription.add(subscription);
@@ -150,7 +152,7 @@ public class AnimesFragment extends BaseFragment {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         animes -> mAdapter.setAnimes(new ArrayList<>(animes)),
-                        throwable -> Log.v("ANIME_FRAGMENT", throwable.getMessage())
+                        throwable -> Log.v(LOG_TAG, throwable.getMessage())
                 );
         mCompositeSubscription.add(subscription);
     }

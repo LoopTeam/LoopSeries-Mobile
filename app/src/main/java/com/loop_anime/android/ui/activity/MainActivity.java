@@ -44,7 +44,7 @@ public class MainActivity extends BaseActivity
         getSupportFragmentManager().addOnBackStackChangedListener(this);
         getSupportFragmentManager().beginTransaction()
                 .setCustomAnimations(R.anim.fragment_pop_enter, 0)
-                .add(R.id.container_fragment, new AnimesFragment())
+                .replace(R.id.container_fragment, new AnimesFragment())
                 .commit();
     }
 
